@@ -8,8 +8,11 @@ const plusButton = document.querySelector("#plus")
 const likesUl = document.querySelector(".likes")
 const heartButton = document.querySelector("#heart")
 const pauseButton = document.querySelector("#pause")
-
-console.log(pausedStatus)
+const commentsDiv = document.querySelector("#list")
+const commentsUl = document.createElement("ul")
+commentsDiv.append(commentsUl)
+const commentForm = document.querySelector("#comment-form")
+const commentInput = document.querySelector("#comment-input")
 
 //event handlers
     
@@ -66,4 +69,10 @@ pauseButton.addEventListener('click', function() {
         counter.innerHTML = 0
         counterContents = 0
     }
+})
+commentForm.addEventListener('submit', function(e) {
+    const newComment = document.createElement("li")
+    newComment.textContent = commentInput.value
+    commentsUl.append(newComment)
+    e.preventDefault()
 })
