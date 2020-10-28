@@ -55,11 +55,7 @@ function handleLikeRecord() {
     }
 }
 
-//event listeners
-minusButton.addEventListener('click', handleDecrementCounter)
-plusButton.addEventListener('click', handleIncrementCounter)
-heartButton.addEventListener('click', handleLikeRecord)
-pauseButton.addEventListener('click', function() {
+function handlePauseEvents() {
     if (!pausedStatus) {
         pausedStatus = true
         pauseButton.innerHTML = "resume"
@@ -69,10 +65,19 @@ pauseButton.addEventListener('click', function() {
         counter.innerHTML = 0
         counterContents = 0
     }
-})
-commentForm.addEventListener('submit', function(e) {
+}
+
+function handleCommentSubmissions(e) {
     const newComment = document.createElement("li")
     newComment.textContent = commentInput.value
     commentsUl.append(newComment)
     e.preventDefault()
-})
+}
+
+//event listeners
+minusButton.addEventListener('click', handleDecrementCounter)
+plusButton.addEventListener('click', handleIncrementCounter)
+heartButton.addEventListener('click', handleLikeRecord)
+pauseButton.addEventListener('click', handlePauseEvents)
+commentForm.addEventListener('submit', handleCommentSubmissions)
+
